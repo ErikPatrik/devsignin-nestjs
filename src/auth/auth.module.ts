@@ -4,6 +4,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { UsersSchema } from '../users/schemas/users.schemas';
 import { PassportModule } from '@nestjs/passport';
 import { JwtModule } from '@nestjs/jwt';
+import { JwtStrategy } from './strategies/jwt.strategy';
 
 // aqui configuramos os recursos da autenticação
 // importamos o Mongoose, o Passport module e JWT
@@ -24,7 +25,7 @@ import { JwtModule } from '@nestjs/jwt';
             },
         }),
     ],
-    providers: [AuthService],
+    providers: [AuthService, JwtStrategy], //importar o serviço de jwtstrategy
     exports: [AuthService], //exportamos o service para ser usado em outro módulo
 })
 export class AuthModule {}
