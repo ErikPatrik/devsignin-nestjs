@@ -25,7 +25,7 @@ UsersSchema.pre('save', async function (next) {
         }
 
         // a senha chega sem criptografia, então criptografamos para salvar,e mais o 10 do salt
-        this['passowrd'] = await bcrypt.hash(this['passowrd'], 10);
+        this['password'] = await bcrypt.hash(this['password'], 10);
     } catch (err) {
         return next(err);
     }
